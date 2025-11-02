@@ -29,13 +29,14 @@ export default function Hero() {
         <div className="row align-items-center">
           <div className="col-lg-7 text-center text-lg-start">
             <h1 className="display-4 fw-bold mb-3">
-              Find Your <span className="text-warning">Tribe</span>,<br />
-              Build Your <span className="text-light">Network.</span>
-            </h1>
-            <p className="lead text-light mb-4 fst-italic">
-              Connect with like-minded developers for creativity, collaboration,
-              and innovation.
-            </p>
+  Crafting <span className="text-warning">Elegant</span> Code,<br />
+  Building <span className="text-light">Intelligent</span> Systems.
+</h1>
+
+           <p className="lead text-light mb-4 fst-italic">
+  A Kenyan innovator shaping the web through elegant design, robust backends, and seamless user experiences.
+</p>
+
 
             <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
               <a
@@ -47,14 +48,14 @@ export default function Hero() {
                 onMouseOver={(e) => (e.target.style.boxShadow = "0 0 20px #ffb6c1")}
                 onMouseOut={(e) => (e.target.style.boxShadow = "none")}
               >
-                Join for Free →
+                About Mkay 
               </a>
 
               <a
                 href="#explore"
                 className="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fw-semibold"
               >
-                Explore Communities
+                View My Projects
               </a>
             </div>
           </div>

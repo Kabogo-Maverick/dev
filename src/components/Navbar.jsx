@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Links */}
         <div className="collapse navbar-collapse" id="navmenu">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {["Home", "Features", "About", "Contact"].map((link) => (
+            {["Home", "About Mk", "Projects", "Contact Me"].map((link) => (
               <li className="nav-item mx-2" key={link}>
                 <a
                   className="nav-link fw-medium text-dark"
@@ -48,7 +48,7 @@ export default function Navbar() {
           </ul>
 
           <button className="btn btn-dark rounded-pill px-4 ms-lg-3">
-            Join for Free
+            Join My Community
           </button>
         </div>
       </div>
