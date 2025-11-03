@@ -1,16 +1,58 @@
-# React + Vite
+# 🚀 Maverick Kabogo — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my **personal portfolio website**, built with **React, Framer Motion**, and **Bootstrap**.  
+This project showcases my journey, skills, values, and featured projects — all wrapped in a modern, interactive, and visually immersive design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌈 Overview
 
-## React Compiler
+This portfolio represents **who I am as a developer, designer, and creator**.  
+Every section — from the hero animation to the contact form — has been crafted to be elegant, responsive, and unique.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Highlights:**
+- ⚡ Dynamic animations powered by Framer Motion  
+- 🎨 Consistent modern dark theme with colorful gradients  
+- 🧩 Modular structure — every section is a reusable component  
+- 📄 Downloadable CV  
+- 💬 Interactive Contact Form  
+- 🖼️ Project showcase with animations & hover effects  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🏗️ Project Structure
+
+```bash
+📦 src/
+├── assets/                # Images, PDFs, icons, and other static files
+│   └── cv.pdf             # Your downloadable CV
+│
+├── components/
+│   ├── home/              # Homepage-related sections
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Skills.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Services.jsx
+│   │   └── Footer.jsx
+│   │
+│   ├── about/             # About page sections
+│   │   ├── AboutIntro.jsx
+│   │   ├── Journey.jsx
+│   │   └── Values.jsx
+│   │
+│   ├── portfolio/         # Portfolio showcase components
+│   │   └── PortfolioShowcase.jsx
+│   │
+│   └── contact/           # Contact page components
+│       ├── ContactIntro.jsx
+│       └── ContactForm.jsx
+│
+├── pages/                 # Page-level wrappers
+│   ├── Home.jsx
+│   ├── AboutMk.jsx
+│   ├── Portfolio.jsx
+│   └── Contact.jsx
+│
+├── App.js                 # Main routing & layout file
+└── index.js               # Entry point
