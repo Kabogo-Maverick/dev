@@ -32,6 +32,8 @@ export default function AboutIntro() {
                 fluid
                 rounded
                 style={{
+                              marginTop: "60px",
+
                   boxShadow: "0 0 30px rgba(138,43,226,0.4)",
                   border: "2px solid rgba(0,255,150,0.3)",
                 }}
@@ -57,6 +59,8 @@ export default function AboutIntro() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 fontSize: "2.5rem",
+                            marginTop: "40px"
+
               }}
             >
               About Me
