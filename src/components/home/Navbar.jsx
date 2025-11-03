@@ -1,53 +1,139 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.jpeg";
 
 export default function Navbar() {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [navOpen, setNavOpen] = useState(false);
+
+  // Hide/show navbar on scroll
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+    return () => window.removeEventListener("scroll", controlNavbar);
+  }, [lastScrollY]);
+
+  // Close navbar when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      const nav = document.getElementById("navmenu");
+      const toggler = document.getElementById("navbar-toggler");
+
+      if (
+        navOpen &&
+        nav &&
+        !nav.contains(e.target) &&
+        !toggler.contains(e.target)
+      ) {
+        setNavOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [navOpen]);
+
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "About Mk", path: "/aboutmk" },
+    { name: "Projects", path: "/projects" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "CV", path: "/CV" },
+    { name: "Contact Me", path: "/contact" },
+  ];
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm fixed-top">
+    <nav
+      className={`navbar navbar-expand-lg navbar-dark fixed-top py-3 ${
+        show ? "nav-visible" : "nav-hidden"
+      }`}
+      style={{
+        background: "transparent",
+        transition: "all 0.4s ease",
+        backdropFilter: "blur(6px)",
+      }}
+    >
       <div className="container">
-        {/* Logo */}
-        <a className="navbar-brand d-flex align-items-center" href="#">
+        {/* Brand */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
             src={logo}
             alt="Logo"
             width="45"
             height="45"
-            className="rounded-circle me-2"
+            className="rounded-circle me-2 border border-light"
           />
-          <span className="fw-semibold fst-italic text-dark fs-5">
+          <span className="fw-semibold fst-italic text-white fs-5">
             MaverickDev
           </span>
-        </a>
+        </Link>
 
-        {/* Toggle */}
+        {/* Toggle Button */}
         <button
-          className="navbar-toggler"
+          id="navbar-toggler"
+          className="navbar-toggler border-0"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navmenu"
-          aria-controls="navmenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent immediate close
+            setNavOpen(!navOpen);
+          }}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span
+            className={`navbar-toggler-icon ${
+              navOpen ? "d-none" : "d-inline-block"
+            }`}
+          ></span>
+          <span
+            className={`text-white fs-3 fw-bold ${
+              navOpen ? "d-inline-block" : "d-none"
+            }`}
+            style={{ transform: "rotate(90deg)", transition: "all 0.3s ease" }}
+          >
+            ×
+          </span>
         </button>
 
-        {/* Links */}
-        <div className="collapse navbar-collapse" id="navmenu">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {["Home", "About Mk", "Projects", "Contact Me"].map((link) => (
-              <li className="nav-item mx-2" key={link}>
-                <a
-                  className="nav-link fw-medium text-dark"
-                  href={`#${link.toLowerCase()}`}
+        {/* Nav Menu */}
+        <div
+          className={`collapse navbar-collapse justify-content-end ${
+            navOpen ? "show" : ""
+          }`}
+          id="navmenu"
+        >
+          <ul className="navbar-nav mb-2 mb-lg-0 text-center">
+            {links.map((link) => (
+              <li className="nav-item mx-2" key={link.name}>
+                <Link
+                  to={link.path}
+                  className="nav-link fw-semibold text-white"
+                  style={{
+                    transition: "color 0.3s ease",
+                  }}
+                  onClick={() => setNavOpen(false)}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = "#00ffcc") // glowing aqua hover
+                  }
+                  onMouseLeave={(e) => (e.target.style.color = "#fff")}
                 >
-                  {link}
-                </a>
+                  {link.name}
+                </Link>
               </li>
             ))}
           </ul>
 
-          <button className="btn btn-dark rounded-pill px-4 ms-lg-3">
+          <button
+            className="btn btn-outline-light rounded-pill px-4 ms-lg-3"
+            onClick={() => setNavOpen(false)}
+          >
             Join My Community
           </button>
         </div>
