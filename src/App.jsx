@@ -9,11 +9,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Projects from "./pages/Projects"; // ✅ Add this
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
+import CustomCursor from "./components/CustomCursor";
 
 
 function App() {
   return (
     <Router>
+      <CustomCursor />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
