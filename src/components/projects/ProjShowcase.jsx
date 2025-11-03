@@ -22,6 +22,42 @@ export default function ProjShowcase() {
       tag: "Frontend Design",
       color: "#f472b6",
     },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
+    {
+      title: "Mint Fizz",
+      desc: "A vibrant club website with glowing animations, interactive displays, and a one-page smooth scroll layout.",
+      tag: "Frontend Design",
+      color: "#f472b6",
+    },
   ];
 
   return (

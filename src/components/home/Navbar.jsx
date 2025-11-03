@@ -46,8 +46,8 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About Mk", path: "/aboutmk" },
     { name: "Projects", path: "/projects" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "CV", path: "/CV" },
+    // { name: "Portfolio", path: "/portfolio" },
+    { name: "Resume", path: "/resume" },
     { name: "Contact Me", path: "/contact" },
   ];
 

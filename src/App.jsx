@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Projects from "./pages/Projects"; // ✅ Add this
+// import Portfolio from "./pages/Portfolio";
+import Resume from "./pages/Resume";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aboutmk" element={<AboutMk />} />
         <Route path="/projects" element={<Projects />} /> {/* ✅ New route */}
+        {/* <Route path="/portfolio" element={<Portfolio />} /> ✅ New route */}
+        <Route path="/resume" element={<Resume />} /> {/* ✅ New route */}
 
         {/* You can add more later like Projects, Contact, etc. */}
       </Routes>
