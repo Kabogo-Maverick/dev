@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Github, Linkedin } from "react-bootstrap-icons";
 import logo from "../../assets/logo.jpeg";
 
 export default function Navbar() {
@@ -7,17 +8,13 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
 
-  // Hide/show navbar on scroll
+  // Hide/show on scroll
   useEffect(() => {
     const controlNavbar = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
+      if (window.scrollY > lastScrollY && window.scrollY > 100) setShow(false);
+      else setShow(true);
       setLastScrollY(window.scrollY);
     };
-
     window.addEventListener("scroll", controlNavbar);
     return () => window.removeEventListener("scroll", controlNavbar);
   }, [lastScrollY]);
@@ -27,17 +24,10 @@ export default function Navbar() {
     const handleOutsideClick = (e) => {
       const nav = document.getElementById("navmenu");
       const toggler = document.getElementById("navbar-toggler");
-
-      if (
-        navOpen &&
-        nav &&
-        !nav.contains(e.target) &&
-        !toggler.contains(e.target)
-      ) {
+      if (navOpen && nav && !nav.contains(e.target) && !toggler.contains(e.target)) {
         setNavOpen(false);
       }
     };
-
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
   }, [navOpen]);
@@ -46,7 +36,6 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About Mk", path: "/aboutmk" },
     { name: "Projects", path: "/projects" },
-    // { name: "Portfolio", path: "/portfolio" },
     { name: "Resume", path: "/resume" },
     { name: "Contact Me", path: "/contact" },
   ];
@@ -57,6 +46,7 @@ export default function Navbar() {
         show ? "nav-visible" : "nav-hidden"
       }`}
       style={{
+        paddingRight: "0px",
         background: "transparent",
         transition: "all 0.4s ease",
         backdropFilter: "blur(6px)",
@@ -83,7 +73,7 @@ export default function Navbar() {
           className="navbar-toggler border-0"
           type="button"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent immediate close
+            e.stopPropagation();
             setNavOpen(!navOpen);
           }}
         >
@@ -109,33 +99,71 @@ export default function Navbar() {
           }`}
           id="navmenu"
         >
-          <ul className="navbar-nav mb-2 mb-lg-0 text-center">
+          <ul
+            className="navbar-nav align-items-center gap-lg-4 mb-2 mb-lg-0 text-center"
+            style={{ fontSize: "1rem", letterSpacing: "0.3px" }}
+          >
             {links.map((link) => (
-              <li className="nav-item mx-2" key={link.name}>
+              <li className="nav-item" key={link.name}>
                 <Link
                   to={link.path}
-                  className="nav-link fw-semibold text-white"
-                  style={{
-                    transition: "color 0.3s ease",
-                  }}
+                  className="nav-link fw-semibold text-white px-2"
+                  style={{ transition: "color 0.3s ease" }}
                   onClick={() => setNavOpen(false)}
-                  onMouseEnter={(e) =>
-                    (e.target.style.color = "#00ffcc") // glowing aqua hover
-                  }
+                  onMouseEnter={(e) => (e.target.style.color = "#00ffcc")}
                   onMouseLeave={(e) => (e.target.style.color = "#fff")}
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
-          </ul>
 
-          <button
-            className="btn btn-outline-light rounded-pill px-4 ms-lg-3"
-            onClick={() => setNavOpen(false)}
-          >
-            Join My Community
-          </button>
+            {/* Social Icons */}
+            <li className="nav-item d-flex align-items-center gap-3 ms-lg-3">
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white fs-5"
+                onMouseEnter={(e) => (e.target.style.color = "#00ffcc")}
+                onMouseLeave={(e) => (e.target.style.color = "#fff")}
+              >
+                <Github />
+              </a>
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white fs-5"
+                onMouseEnter={(e) => (e.target.style.color = "#00ffcc")}
+                onMouseLeave={(e) => (e.target.style.color = "#fff")}
+              >
+                <Linkedin />
+              </a>
+            </li>
+
+            {/* Join Button */}
+            <li className="nav-item ms-lg-3 mt-3 mt-lg-0">
+              <button
+                className="btn btn-outline-light rounded-pill px-4 fw-semibold"
+                onClick={() => setNavOpen(false)}
+                style={{
+                  transition: "all 0.3s ease",
+                  borderColor: "#00ffcc",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#00ffcc";
+                  e.target.style.color = "#000";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "transparent";
+                  e.target.style.color = "#fff";
+                }}
+              >
+                Join My Community
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

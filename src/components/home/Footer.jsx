@@ -1,14 +1,24 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  Github,
-  Instagram,
-  Twitter,
-  Linkedin,
-} from "react-bootstrap-icons";
+import { Github, Instagram, Twitter, Linkedin } from "react-bootstrap-icons";
 import logo from "../../assets/logo.jpeg";
 
 export default function Footer() {
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Mk", path: "/aboutmk" },
+    { name: "Projects", path: "/projects" },
+    { name: "Resume", path: "/resume" },
+    { name: "Contact Me", path: "/contact" },
+  ];
+
+  const socials = [
+    { icon: <Github />, link: "https://github.com/" },
+    { icon: <Instagram />, link: "https://instagram.com/" },
+    { icon: <Twitter />, link: "https://x.com/" },
+    { icon: <Linkedin />, link: "https://linkedin.com/" },
+  ];
+
   return (
     <footer
       className="text-light py-5 position-relative"
@@ -18,7 +28,7 @@ export default function Footer() {
         overflow: "hidden",
       }}
     >
-      {/* Soft glowing effects */}
+      {/* Glowing accents */}
       <div
         style={{
           position: "absolute",
@@ -73,7 +83,7 @@ export default function Footer() {
             </div>
           </Col>
 
-          {/* Navigation links */}
+          {/* Navigation Links */}
           <Col md={4}>
             <h6
               className="fw-semibold mb-3"
@@ -82,29 +92,27 @@ export default function Footer() {
               Explore
             </h6>
             <ul className="list-unstyled">
-              {["Home", "About", "Services", "Projects", "Contact"].map(
-                (item, index) => (
-                  <li key={index} className="mb-2">
-                    <a
-                      href={`#${item.toLowerCase()}`}
-                      className="text-light text-decoration-none"
-                      style={{
-                        opacity: 0.8,
-                        transition: "0.3s ease",
-                        fontStyle: "italic",
-                      }}
-                      onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
-                      onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {navLinks.map((item, index) => (
+                <li key={index} className="mb-2">
+                  <a
+                    href={item.path}
+                    className="text-light text-decoration-none"
+                    style={{
+                      opacity: 0.8,
+                      transition: "0.3s ease",
+                      fontStyle: "italic",
+                    }}
+                    onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
+                    onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </Col>
 
-          {/* Social icons */}
+          {/* Social Icons */}
           <Col md={4}>
             <h6
               className="fw-semibold mb-3"
@@ -113,12 +121,7 @@ export default function Footer() {
               Connect
             </h6>
             <div className="d-flex justify-content-center justify-content-md-start gap-3">
-              {[
-                { icon: <Github />, link: "https://github.com/" },
-                { icon: <Instagram />, link: "https://instagram.com/" },
-                { icon: <Twitter />, link: "https://x.com/" },
-                { icon: <Linkedin />, link: "https://linkedin.com/" },
-              ].map((social, index) => (
+              {socials.map((social, index) => (
                 <a
                   key={index}
                   href={social.link}
